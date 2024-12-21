@@ -19,7 +19,8 @@ jobs:
           node-version: "20"
       # Pick your own package manager and build script
       - run: npm install
-      - run: npx nuxt build --preset github_pages
+      # Only set NUXT_APP_BASE_URL if you're NOT deploying to a custom domain
+      - run: NUXT_APP_BASE_URL='https://jasonventresca.github.io/nuxt-hello-world/' npx nuxt build --preset github_pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
